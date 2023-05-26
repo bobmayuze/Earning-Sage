@@ -1,0 +1,8 @@
+python-dotenv
+flask
+flask_cors
+langchain
+tiktoken
+openai
+chromadb
+gradio
