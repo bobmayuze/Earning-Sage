@@ -13,20 +13,19 @@ Feel free to reach out to yuze.bob.ma@gmail.com for more advanced features or ex
 
 # Getting Started
 
-## Create .env file and provide your openAPI key
+## 1. Create .env file and provide your openAPI key
 ```shell
 echo OPENAI_API_KEY={YOUR OPENAI_API_KEY} > .env
 ```
 
-## Start
+## 2. Start
 ```shell
-python main.py
+pip install -r requirements.txt
+python gradio_ui.py
 ```
 
-## Test
-```shell
-curl -X POST -H "Content-Type: application/json" -d '{"message": "What earning reports are available?"}' http://127.0.0.1:5000/about
-```
+## 3. Try it out
+Visit http://127.0.0.1:7860/ 
 
 Sample questions you could be asking :
 
