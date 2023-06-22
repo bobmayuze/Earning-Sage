@@ -1,7 +1,7 @@
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
@@ -57,7 +57,10 @@ def get_report_insight(user_query : str):
     target_file = docs[0].dict()['metadata']['source']
     target_file = './earning_reports/' + target_file.split('/')[-1]
     
-    llm = OpenAI(temperature=0)
+    import openai
+    openai.api_base = "https://api-demo.llm.lepton.run/v1"
+    openai.api_key = "api-key"
+    llm = OpenAI(temperature=0, model_name='vicuna-13b')
     loader = CSVLoader(target_file, csv_args={ 'delimiter': '\t' })
     index = VectorstoreIndexCreator().from_loaders([loader])
     query = user_query

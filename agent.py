@@ -15,8 +15,10 @@ def agent_init():
     If Assistant is not sure about a question, reply with `I do not know`
     '''
 
-    
-    llm = OpenAI(temperature=0)
+    import openai
+    openai.api_base = "https://api-demo.llm.lepton.run/v1"
+    openai.api_key = "api-key"
+    llm = OpenAI(temperature=0, model_name='vicuna-13b')
     agent = initialize_agent(
         tools, 
         llm, 
