@@ -15,7 +15,8 @@ Feel free to reach out to yuze.bob.ma@gmail.com for more advanced features or ex
 
 ## 1. Create .env file and provide your openAPI key
 ```shell
-echo OPENAI_API_KEY={YOUR OPENAI_API_KEY} > .env
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+OPENAI_API_BASE=https://api.openai.com/v1 # if you are using open ai
 ```
 
 ## 2. Start

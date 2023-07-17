@@ -1,9 +1,15 @@
-import gradio as gr
-from agent import agent_init
-
 from dotenv import load_dotenv
 load_dotenv()
 
+import openai
+
+openai.api_base = os.environ["OPENAI_API_BASE"]
+openai.api_key = os.environ["OPENAI_API_KEY"]
+
+
+
+import gradio as gr
+from agent import agent_init
 
 # Util for Gradio to use
 def chat(uesr_query : str):
@@ -56,5 +62,6 @@ def ui():
 
 
 if __name__ == '__main__' : 
+    print('Loading LLM from', openai.api_base)
     gui = ui()
     gui.launch()
