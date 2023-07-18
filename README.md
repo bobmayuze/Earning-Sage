@@ -15,8 +15,10 @@ Feel free to reach out to yuze.bob.ma@gmail.com for more advanced features or ex
 
 ## 1. Create .env file and provide your openAPI key
 ```shell
+OPENAI_API_BASE=https://api.openai.com/v1
 OPENAI_API_KEY=YOUR_OPENAI_API_KEY
-OPENAI_API_BASE=https://api.openai.com/v1 # if you are using open ai
+LANGCHAIN_SESSION=LANGSMITH_PROJECT_NAME
+LANGCHAIN_API_KEY=LANGSMITH_API_KEY
 ```
 
 ## 2. Start
@@ -33,3 +35,11 @@ Sample questions you could be asking :
 - What earning reports are available?
 - What was talked during Apple's earning report?
 - How much revenue is achieved on the iphone sector
+
+# Trying out different models 
+
+Switch the `OPENAI_API_BASE` to corresponding url and run the following command.
+
+```shell
+python retrivalQA.py question-list.txt
+```
