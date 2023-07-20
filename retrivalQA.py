@@ -28,7 +28,7 @@ target_file = "./earning_reports/AAPL-89728-report.tsv"
 def create_retriever(target_file):
     loader = CSVLoader(target_file, csv_args={ 'delimiter': '\t' })
     text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-        chunk_size=1024, chunk_overlap=0
+        chunk_size=2048, chunk_overlap=0
     )
     docs = loader.load_and_split(text_splitter=text_splitter)
     embeddings = OpenAIEmbeddings()
