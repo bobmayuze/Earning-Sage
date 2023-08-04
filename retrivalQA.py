@@ -31,13 +31,20 @@ def create_retriever(target_file):
         chunk_size=2048, chunk_overlap=0
     )
     docs = loader.load_and_split(text_splitter=text_splitter)
-    embeddings = OpenAIEmbeddings()
+    embeddings = OpenAIEmbeddings(
+        # model="llama2"
+    )
     db = Chroma.from_documents(docs, embeddings)
     return db.as_retriever()
 
 def create_qa_retrival_chain():
     foo_retriever = create_retriever(target_file)
-    llm = OpenAI(temperature=0)
+    llm = OpenAI(
+        temperature=0, 
+        # model_name="llam2", 
+        max_tokens=2047,
+        request_timeout=240,
+    )
     qa = RetrievalQA.from_chain_type(
         llm=llm, chain_type="stuff", retriever=foo_retriever
     )
@@ -60,6 +67,7 @@ def main():
             line = line.strip()
             if line == '':
                 continue
+            print('-' * 80)
             print("Questions :", line)
             response = retrival_chain.run(line)
             print("Answer :", response)
